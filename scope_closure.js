@@ -77,11 +77,15 @@ var allUsers = [
   "Ali",
 ];
 
-function findPotentialFriends(existingFriends) {}
+function findPotentialFriends(existingFriends) {
+  return function (userCheck) {
+    console.log(!existingFriends.includes(userCheck));
+  };
+}
 
 var isNotAFriend = findPotentialFriends(friends);
-// isNotAFriend(allUsers[0]); // false
-// isNotAFriend(secondLevelFriends[2]); // true
+isNotAFriend(allUsers[0]); // false
+isNotAFriend(secondLevelFriends[2]); // true
 
 /******************************************************************************\
 	Task 4: Keep a log
@@ -109,7 +113,7 @@ function timeOutCounter() {
     }, i * 1000);
   }
 }
-timeOutCounter();
+// timeOutCounter();
 
 /******************************************************************************\
 	Task 5: Check if name exists
