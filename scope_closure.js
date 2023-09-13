@@ -107,13 +107,13 @@ to 5. What we need to do is console.log(i) so that it logs like so:
  */
 
 function timeOutCounter() {
-  for (var i = 0; i <= 5; i++) {
+  for (let i = 0; i <= 5; i++) {
     setTimeout(function () {
       console.log(i);
     }, i * 1000);
   }
 }
-// timeOutCounter();
+timeOutCounter();
 
 /******************************************************************************\
 	Task 5: Check if name exists
@@ -131,15 +131,40 @@ function timeOutCounter() {
 
 // ==== Challenge 2: Create a counter function ====
 const counter = () => {
+  let count = 0;
   // Return a function that when invoked increments and returns a counter variable.
+  return function () {
+    count++;
+    console.log(count);
+  };
 };
-// Example usage: const newCounter = counter();
-// newCounter(); // 1
-// newCounter(); // 2
+// Example usage:
+const newCounter = counter();
+
+newCounter(); // 1
+newCounter(); // 2
 
 // ==== Challenge 3: Create a counter function with an object that can increment and decrement ====
 const counterFactory = () => {
+  let counter = 0;
+
+  return {
+    increment: function () {
+      return ++counter;
+    },
+    decrement: function () {
+      return --counter;
+    },
+  };
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
 };
+
+const myCounter = counterFactory();
+
+console.log(myCounter.increment());
+console.log(myCounter.increment());
+
+console.log(myCounter.decrement());
+console.log(myCounter.decrement());
